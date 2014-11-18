@@ -1,4 +1,3 @@
-ajax-forms
-==========
+### ajax-forms
 
-Jquery Plugin to submit and validate forms using ajax.
+Jquery Plugin to submit and validate forms using ajax. 
