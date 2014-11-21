@@ -7,28 +7,31 @@
     $.fn.ajaxForms = function (options) {
         
         var settings = $.extend({}, defaults, options);
+        
     };
     
     $.fn.ajaxForms.defaults = {
-        formSuccess: function (data) {
+        formSuccess: function ($form, data) {
             console.log('success');
         },
-        formError: function (error) {
+        formError: function ($form, error) {
             console.log('form error');
         },
-        formAlways: function () {
+        formAlways: function ($form) {
             console.log('form always');
         },
-        inputSuccess: function (data) {
+        inputSuccess: function ($input, data) {
             console.log('input success');
         },
-        inputError: function (error) {
+        inputError: function ($input, error) {
             console.log('input error');
         },
-        inputAlways: function () {
+        inputAlways: function ($input, $spinner) {
             console.log('input always');
+            $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
-        inputEvent: 'change'
+        inputEvent: 'change',
+        hiddenClass: 'hidden'
     };
     
     // private functions
@@ -39,19 +42,21 @@
             type: $form.attr('method'),
             data: $form.serialize()
         })
-        .error($.fn.ajaxForms.defaults.formError)
-        .success($.fn.ajaxForms.defaults.formSuccess)
-        .always($.fn.ajaxForms.defaults.formAlways);
+        .error($.fn.ajaxForms.defaults.formError($form))
+        .success($.fn.ajaxForms.defaults.formSuccess($form))
+        .always($.fn.ajaxForms.defaults.formAlways($form));
     };
     
     function validateInput ($input) {
+        var $spinner = $($input.attr('spinner'));
+        $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
         $.ajax({
             url: $input.attr('validate-ajax'),
             data: $input.val()
         })
-        .error($.fn.ajaxForms.defaults.inputError)
-        .success($.fn.ajaxForms.defaults.inputSuccess)
-        .always($.fn.ajaxForms.defaults.inputAlways);
+        .error($.fn.ajaxForms.defaults.inputError($input))
+        .success($.fn.ajaxForms.defaults.inputSuccess($input))
+        .always($.fn.ajaxForms.defaults.inputAlways($input, $spinner));
     };
     
     // events
