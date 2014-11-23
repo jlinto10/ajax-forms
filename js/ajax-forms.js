@@ -17,8 +17,9 @@
         formError: function ($form, error) {
             console.log('form error');
         },
-        formAlways: function ($form) {
+        formAlways: function ($form, $spinner) {
             console.log('form always');
+            $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
         inputSuccess: function ($input, data) {
             console.log('input success');
@@ -37,6 +38,8 @@
     // private functions
     
     function submitForm ($form) {
+        var $spinner = $($form.attr('spinner'));
+        $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
         $.ajax({
             url: $form.attr('action'),
             type: $form.attr('method'),
@@ -44,7 +47,7 @@
         })
         .error($.fn.ajaxForms.defaults.formError($form))
         .success($.fn.ajaxForms.defaults.formSuccess($form))
-        .always($.fn.ajaxForms.defaults.formAlways($form));
+        .always($.fn.ajaxForms.defaults.formAlways($form, $spinner));
     };
     
     function validateInput ($input) {
