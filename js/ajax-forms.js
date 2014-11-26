@@ -11,20 +11,21 @@
     };
     
     $.fn.ajaxForms.defaults = {
-        formSuccess: function ($form, data) {
+        formSuccess: function (data, $form) {
             console.log('success');
         },
-        formError: function ($form, error) {
+        formError: function (error, $form) {
             console.log('form error');
+            alert(error);
         },
         formAlways: function ($form, $spinner) {
             console.log('form always');
             $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
-        inputSuccess: function ($input, data) {
+        inputSuccess: function (data, $input) {
             console.log('input success');
         },
-        inputError: function ($input, error) {
+        inputError: function (error, $input) {
             console.log('input error');
         },
         inputAlways: function ($input, $spinner) {
@@ -45,8 +46,12 @@
             type: $form.attr('method'),
             data: $form.serialize()
         })
-        .error($.fn.ajaxForms.defaults.formError($form))
-        .success($.fn.ajaxForms.defaults.formSuccess($form))
+        .error(function (error) {
+            $.fn.ajaxForms.defaults.formError(error, $form);
+        })
+        .success(function(data) {
+            $.fn.ajaxForms.defaults.formSuccess(data, $form);
+        })
         .always($.fn.ajaxForms.defaults.formAlways($form, $spinner));
     };
     
@@ -57,8 +62,12 @@
             url: $input.attr('validate-ajax'),
             data: $input.val()
         })
-        .error($.fn.ajaxForms.defaults.inputError($input))
-        .success($.fn.ajaxForms.defaults.inputSuccess($input))
+        .error(function (error) {
+            $.fn.ajaxForms.defaults.inputError(error, $input)
+        })
+        .success(function (data) {
+            $.fn.ajaxForms.defaults.inputSuccess(data, $input);
+        })
         .always($.fn.ajaxForms.defaults.inputAlways($input, $spinner));
     };
     
