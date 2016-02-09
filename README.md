@@ -6,7 +6,7 @@ Also, there are some scenarios where you need the validation to occur in the bac
 
 ## How To
 
-First, include the library like any other Jquery extension using the `script` tag.
+First, include `js/ajax-forms.js` like any other Jquery extension using the `script` tag.
 
 #### Where to validate
 
