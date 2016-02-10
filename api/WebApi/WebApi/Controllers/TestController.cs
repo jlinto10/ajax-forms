@@ -4,19 +4,22 @@ using System.Linq;
 using System.Threading;
 
 using WebApi.Models;
+using System;
 
 namespace WebApi.Controllers
 {
     [RoutePrefix("test")]
     public class TestController : ApiController
     {
+        private readonly Random _random = new Random();
 
+        private const int delay = 500;
         private const string emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
         [Route("email"), HttpGet]
         public IHttpActionResult Index(string email)
         {
-            Thread.Sleep(1500);
+            Thread.Sleep(_random.Next(delay) + delay/2);
 
             var isValidEmail = Regex.Match(email, emailPattern).Success;
 
@@ -34,7 +37,7 @@ namespace WebApi.Controllers
         [Route("username"), HttpGet]
         public IHttpActionResult Username(string username)
         {
-            Thread.Sleep(1500);
+            Thread.Sleep(_random.Next(delay) + delay / 2);
 
             var userNameAvailable = !userNameList.Contains(username);
 
