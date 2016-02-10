@@ -24,8 +24,12 @@
         },
         inputSuccess: function (data, $input) {
             console.log(data);
+            var $formGroup = $input.parentsUntil('.form-group'),
+                error = 'has-error';
             if(data['isValid']){
-                
+                $formGroup.removeClass(error);
+            } else {
+                $formGroup.addClass(error);
             }
         },
         inputError: function (error, $input) {
