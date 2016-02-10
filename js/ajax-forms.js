@@ -5,9 +5,7 @@
     // settings/defaults
     
     $.fn.ajaxForms = function (options) {
-        
         var settings = $.extend({}, defaults, options);
-        
     };
     
     $.fn.ajaxForms.defaults = {
@@ -23,10 +21,12 @@
             $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
         inputSuccess: function (data, $input) {
-            console.log(data);
             var $formGroup = $input.parentsUntil('.form-group'),
-                error = 'has-error';
-            if(data['isValid']){
+                error = 'has-error',
+                isValid = data['isValid'],
+                message = data['message'];
+            
+            if(isValid){
                 $formGroup.removeClass(error);
             } else {
                 $formGroup.addClass(error);
