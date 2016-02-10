@@ -1,6 +1,8 @@
 ﻿using System.Web.Http;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Threading;
+
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -14,6 +16,8 @@ namespace WebApi.Controllers
         [Route("email"), HttpGet]
         public IHttpActionResult Index(string email)
         {
+            Thread.Sleep(1500);
+
             var isValidEmail = Regex.Match(email, emailPattern).Success;
 
             var result = new ValidationResult
@@ -30,6 +34,8 @@ namespace WebApi.Controllers
         [Route("username"), HttpGet]
         public IHttpActionResult Username(string username)
         {
+            Thread.Sleep(1500);
+
             var userNameAvailable = !userNameList.Contains(username);
 
             var result = new ValidationResult

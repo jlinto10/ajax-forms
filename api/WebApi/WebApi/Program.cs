@@ -13,7 +13,7 @@ namespace WebApi
             // Start OWIN host 
             using (WebApp.Start<Startup>(url: baseAddress))
             {
-                Console.WriteLine("OWIN self hosted service started at {0}\n", baseAddress);
+                Console.WriteLine("OWIN service started at {0}\n", baseAddress);
                 Console.ReadLine();
             }
         }

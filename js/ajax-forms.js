@@ -12,7 +12,7 @@
     
     $.fn.ajaxForms.defaults = {
         formSuccess: function (data, $form) {
-            console.log('success');
+            console.log(data);
         },
         formError: function (error, $form) {
             console.log('form error');
@@ -23,7 +23,7 @@
             $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
         inputSuccess: function (data, $input) {
-            console.log('input success');
+            console.log(data);
         },
         inputError: function (error, $input) {
             console.log('input error');
@@ -60,7 +60,7 @@
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
         $.ajax({
             url: $input.attr('validate-ajax'),
-            data: $input.val()
+            data: $input.attr('type') + '=' + $input.val()
         })
         .error(function (error) {
             $.fn.ajaxForms.defaults.inputError(error, $input)
