@@ -24,6 +24,9 @@
         },
         inputSuccess: function (data, $input) {
             console.log(data);
+            if(data['isValid']){
+                
+            }
         },
         inputError: function (error, $input) {
             console.log('input error');
@@ -52,7 +55,9 @@
         .success(function(data) {
             $.fn.ajaxForms.defaults.formSuccess(data, $form);
         })
-        .always($.fn.ajaxForms.defaults.formAlways($form, $spinner));
+        .always(function(){
+            $.fn.ajaxForms.defaults.formAlways($form, $spinner);
+        });
     };
     
     function validateInput ($input) {
@@ -60,7 +65,7 @@
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
         $.ajax({
             url: $input.attr('validate-ajax'),
-            data: $input.attr('type') + '=' + $input.val()
+            data: $input.attr('name') + '=' + $input.val()
         })
         .error(function (error) {
             $.fn.ajaxForms.defaults.inputError(error, $input)
@@ -68,7 +73,9 @@
         .success(function (data) {
             $.fn.ajaxForms.defaults.inputSuccess(data, $input);
         })
-        .always($.fn.ajaxForms.defaults.inputAlways($input, $spinner));
+        .always(function () {
+            $.fn.ajaxForms.defaults.inputAlways($input, $spinner);
+        });
     };
     
     // events
