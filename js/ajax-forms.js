@@ -65,7 +65,7 @@
     };
     
     function validateInput ($input) {
-        var $spinner = $($input.attr('spinner'));
+        var $spinner = $('#' + $input.attr('spinner'));
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
         $.ajax({
             url: $input.attr('validate-ajax'),
