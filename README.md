@@ -8,7 +8,7 @@ Also, there are some scenarios where you need the validation to occur in the bac
 
 First, include `js/ajax-forms.js` like any other Jquery extension using the `script` tag.
 
-#### The <input/> To Validate
+#### The `<input/>` To Validate
 
 `name` is the name of the URL encoded parameter
 
