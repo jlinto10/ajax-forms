@@ -8,13 +8,13 @@ Also, there are some scenarios where you need the validation to occur in the bac
 
 First, include `js/ajax-forms.js` like any other Jquery extension using the `script` tag.
 
-#### The `<input/>` To Validate
+#### The Input To Validate
 
-`name` is the name of the URL encoded parameter
+**name** is the name of the URL encoded parameter
 
-`validate-ajax` is the endpoint for the validation
+**validate-ajax** is the endpoint for the validation
 
-`spinner` attribute is the id of the spinner/loading element
+**spinner** is the id of the spinner/loading element
 
     <input type="text" name="username" validate-ajax="http://localhost:2300/api/validate/username" spinner="usernameSpinner">
     
@@ -22,15 +22,17 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 
 It's nice to provide some kind of feedback while the input is being validated. The spinner can be any kind of element. My example is using the spinner in Font Awesome.
 
-    <span class="form-control-feedback"><i id="usernameSpinner" class="fa fa-spinner fa-spin hidden"></i></span>
+    <span class="form-control-feedback">
+        <i id="usernameSpinner" class="fa fa-spinner fa-spin hidden"></i>
+    </span>
 
 Note: the default hidden class happens to be `hidden`. This can be set to something else.
 
-#### The Validation Endpoint(s) 
+#### The Validation Endpoint 
 
 ##### The Request
 
-The `name` attribute is used to name the URL encoded parameters. Therefore the example input above would generate the following request : 
+The `name` attribute is used to name the URL encoded parameters. Therefore the example input above would generate the following GET request : 
 
 `http://localhost:2300/api/validate/username?username={valueEntered}`
 
