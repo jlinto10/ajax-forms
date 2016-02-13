@@ -16,7 +16,11 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 
 **spinner** is the id of the spinner/loading element
 
-    <input type="text" name="username" validate-ajax="http://localhost:2300/api/validate/username" spinner="usernameSpinner">
+    <input 
+        type="text"
+        name="username"
+        validate-ajax="http://localhost:2300/api/validate/username"
+        spinner="usernameSpinner">
     
 #### The Spinner
 
@@ -32,7 +36,7 @@ Note: the default hidden class happens to be `hidden`. This can be set to someth
 
 ##### The Request
 
-The `name` attribute is used to name the URL encoded parameters. Therefore the example input above would generate the following GET request : 
+The **name** attribute is used to name the URL encoded parameters. Therefore the example input above would generate the following GET request : 
 
 `http://localhost:2300/api/validate/username?username={valueEntered}`
 
