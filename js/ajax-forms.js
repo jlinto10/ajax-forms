@@ -24,12 +24,18 @@
             var $formGroup = $input.parentsUntil('.form-group'),
                 error = 'has-error',
                 isValid = data['isValid'],
-                message = data['message'];
+                message = data['message'],
+                $success = $('#' + $input.attr('success')),
+                $danger = $('#' + $input.attr('danger'));
             
             if(isValid){
                 $formGroup.removeClass(error);
+                $success.removeClass($.fn.ajaxForms.defaults.hiddenClass);
+                $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
             } else {
                 $formGroup.addClass(error);
+                $danger.removeClass($.fn.ajaxForms.defaults.hiddenClass);
+                $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
             }
         },
         inputError: function (error, $input) {
@@ -46,8 +52,14 @@
     // private functions
     
     function submitForm ($form) {
-        var $spinner = $($form.attr('spinner'));
+        var $spinner = $($form.attr('spinner')),
+            $success = $('#' + $input.attr('success')),
+            $danger = $('#' + $input.attr('danger'));
+        
+        $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
+        $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
+        
         $.ajax({
             url: $form.attr('action'),
             type: $form.attr('method'),
@@ -65,8 +77,14 @@
     };
     
     function validateInput ($input) {
-        var $spinner = $('#' + $input.attr('spinner'));
+        var $spinner = $('#' + $input.attr('spinner')),
+            $success = $('#' + $input.attr('success')),
+            $danger = $('#' + $input.attr('danger'));
+        
+        $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
+        $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
+        
         $.ajax({
             url: $input.attr('validate-ajax'),
             data: $input.attr('name') + '=' + $input.val()
