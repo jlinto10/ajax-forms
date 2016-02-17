@@ -9,31 +9,19 @@
     };
     
     $.fn.ajaxForms.defaults = {
-        formSuccess: function (data, $form) {
-            console.log(data);
-        },
-        formError: function (error, $form) {
-            console.log('form error');
-            alert(error);
-        },
-        formAlways: function ($form, $spinner) {
-            console.log('form always');
-            $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
-        },
-        inputSuccess: function (data, $input) {
+        inputSuccess: function (data, $input, $success, $danger) {
             var $formGroup = $input.parentsUntil('.form-group'),
-                error = 'has-error',
                 isValid = data['isValid'],
-                message = data['message'],
-                $success = $('#' + $input.attr('success')),
-                $danger = $('#' + $input.attr('danger'));
+                message = data['message'];
             
             if(isValid){
-                $formGroup.removeClass(error);
+                $formGroup.removeClass($.fn.ajaxForms.defaults.hasError);
+                $formGroup.addClass($.fn.ajaxForms.defaults.hasSuccess);
                 $success.removeClass($.fn.ajaxForms.defaults.hiddenClass);
                 $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
             } else {
-                $formGroup.addClass(error);
+                $formGroup.addClass($.fn.ajaxForms.defaults.hasError);
+                $formGroup.removeClass($.fn.ajaxForms.defaults.hasSuccess);
                 $danger.removeClass($.fn.ajaxForms.defaults.hiddenClass);
                 $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
             }
@@ -42,39 +30,15 @@
             console.log('input error');
         },
         inputAlways: function ($input, $spinner) {
-            console.log('input always');
             $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
         },
         inputEvent: 'change',
-        hiddenClass: 'hidden'
+        hiddenClass: 'hidden',
+        hasSuccess: 'has-success',
+        hasError: 'has-error'
     };
     
     // private functions
-    
-    function submitForm ($form) {
-        var $spinner = $($form.attr('spinner')),
-            $success = $('#' + $input.attr('success')),
-            $danger = $('#' + $input.attr('danger'));
-        
-        $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
-        $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
-        $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
-        
-        $.ajax({
-            url: $form.attr('action'),
-            type: $form.attr('method'),
-            data: $form.serialize()
-        })
-        .error(function (error) {
-            $.fn.ajaxForms.defaults.formError(error, $form);
-        })
-        .success(function(data) {
-            $.fn.ajaxForms.defaults.formSuccess(data, $form);
-        })
-        .always(function(){
-            $.fn.ajaxForms.defaults.formAlways($form, $spinner);
-        });
-    };
     
     function validateInput ($input) {
         var $spinner = $('#' + $input.attr('spinner')),
@@ -93,7 +57,7 @@
             $.fn.ajaxForms.defaults.inputError(error, $input)
         })
         .success(function (data) {
-            $.fn.ajaxForms.defaults.inputSuccess(data, $input);
+            $.fn.ajaxForms.defaults.inputSuccess(data, $input, $success, $danger);
         })
         .always(function () {
             $.fn.ajaxForms.defaults.inputAlways($input, $spinner);
@@ -101,11 +65,6 @@
     };
     
     // events
-    
-    $(document).on('submit', 'form.submit-ajax', function (event) {
-        event.preventDefault();
-        submitForm($(this));
-    });
     
     $(document).on($.fn.ajaxForms.defaults.inputEvent, 'input[validate-ajax]', function (event) {
         validateInput($(this));
