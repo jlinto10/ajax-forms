@@ -24,6 +24,8 @@
                 $formGroup.removeClass($.fn.ajaxForms.defaults.hasSuccess);
                 $danger.removeClass($.fn.ajaxForms.defaults.hiddenClass);
                 $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
+                $danger.attr('data-content', data['message']);
+                $danger.popover('show');
             }
         },
         inputError: function (error, $input) {
@@ -45,6 +47,7 @@
             $success = $('#' + $input.attr('success')),
             $danger = $('#' + $input.attr('danger'));
         
+        $danger.popover('hide');
         $danger.addClass($.fn.ajaxForms.defaults.hiddenClass);
         $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
         $spinner.removeClass($.fn.ajaxForms.defaults.hiddenClass);
