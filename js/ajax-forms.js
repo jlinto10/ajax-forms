@@ -10,7 +10,7 @@
     
     $.fn.ajaxForms.defaults = {
         inputSuccess: function (data, $input, $success, $danger) {
-            var $formGroup = $input.parentsUntil('.form-group'),
+            var $formGroup = $input.parentsUntil('.' + $.fn.ajaxForms.defaults.inputParent),
                 isValid = data['isValid'],
                 message = data['message'];
             
@@ -24,12 +24,12 @@
                 $formGroup.removeClass($.fn.ajaxForms.defaults.hasSuccess);
                 $danger.removeClass($.fn.ajaxForms.defaults.hiddenClass);
                 $success.addClass($.fn.ajaxForms.defaults.hiddenClass);
-                $danger.attr('data-content', data['message']);
+                $danger.attr('data-content', message);
                 $danger.popover('show');
             }
         },
         inputError: function (error, $input) {
-            console.log('input error');
+            console.log(JSON.stringify(error));
         },
         inputAlways: function ($input, $spinner) {
             $spinner.addClass($.fn.ajaxForms.defaults.hiddenClass);
@@ -37,7 +37,8 @@
         inputEvent: 'change',
         hiddenClass: 'hidden',
         hasSuccess: 'has-success',
-        hasError: 'has-error'
+        hasError: 'has-error',
+        inputParent: 'form-group'
     };
     
     // private functions
