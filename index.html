@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Ajax Forms Jquery Plugin</title>
+        <title>Ajax Input Validation Jquery Plugin</title>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
@@ -9,8 +9,9 @@
     <body>
         <div class="container">
             <div class="col-sm-offset-2">
-                <h3>Ajax Forms</h3>
+                <h3>Ajax Input Validation</h3>
             </div>
+            <div id="validationAlert" class="alert alert-danger col-sm-offset-2 hidden" role="alert">...</div>
             <form class="form-horizontal submit-ajax" role="form" method="get" action="http://localhost:2300/api/form" spinner="#formSpinner">
                 <div class="form-group has-feedback">
                     <label class="col-sm-2 control-label" for="exampleInputEmail1">Email</label>
