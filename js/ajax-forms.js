@@ -39,9 +39,7 @@
             $formGroup.addClass($.fn.ajaxForms.defaults.hasError);
             $formGroup.removeClass($.fn.ajaxForms.defaults.hasSuccess);
             
-            var message = '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input. (&#x2323;_&#x2323;&#x201D;)';
-            
-            $alert.html(message);
+            $alert.html($.fn.ajaxForms.defaults.errorMessage);
             $alert.removeClass($.fn.ajaxForms.defaults.hiddenClass);
             
             console.log('URL : ' + url);
@@ -60,7 +58,8 @@
         hasSuccess: 'has-success',
         hasError: 'has-error',
         inputParent: 'form-group',
-        validationAlert: 'validationAlert'
+        validationAlert: 'validationAlert',
+        errorMessage: '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input. (&#x2323;_&#x2323;&#x201D;)'
     };
     
     // private functions

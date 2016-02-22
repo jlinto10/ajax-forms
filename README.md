@@ -1,4 +1,6 @@
-# Ajax Form Validation (WIP)
+# Ajax Input Validation
+
+This tool is great for validating a single input via ajax. This tool is not intended to replace all validation. A great example usage would be the availability of a username. This likely requires a serverside check against the database. Idealy
 
 I created this because I was working on a web appliaction where some custom field validation existed on both the frontend and backend. The purpose of this tool is to consolidate validation to the backend.
 
@@ -16,21 +18,46 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 
 **spinner** is the id of the spinner/loading element
 
-    <input 
-        type="text"
-        name="username"
-        validate-ajax="http://localhost:2300/api/validate/username"
-        spinner="usernameSpinner">
-    
-#### The Spinner
+**success** is the id of the success icon/element
+
+**danger** is the id of the danger icon/element
+
+    <input type="text"
+        name="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        placeholder="Email"
+        validate-ajax="http://localhost:2300/api/validate/email"
+        spinner="emailSpinner"
+        success="emailSuccess"
+        danger="emailDanger">
+
+Note: the default hidden class happens to be `hidden`. This can be easily configured, along with all the other default functionality.
+
+##### The Spinner
 
 It's nice to provide some kind of feedback while the input is being validated. The spinner can be any kind of element. My example is using the spinner in Font Awesome.
 
-    <span class="form-control-feedback">
-        <i id="usernameSpinner" class="fa fa-spinner fa-spin hidden"></i>
-    </span>
+    <i id="usernameSpinner" class="fa fa-spinner fa-spin hidden"></i>
 
-Note: the default hidden class happens to be `hidden`. This can be set to something else.
+##### Success
+
+This is what you want to show when the input entered is valid.
+
+    <i id="emailSuccess" class="fa fa-check-circle hidden"></i>
+
+##### Danger
+
+This is what you want to show when the input is not valid. Notice that danger element also uses the Bootstrap popover.
+
+    <i id="emailDanger"
+        class="fa fa-exclamation-circle hidden"
+        data-toggle="popover"
+        data-placement="bottom"
+        data-trigger="click"
+        data-container="body"
+        title="Email Error"
+        data-content="Email not valid"></i>
 
 #### The Validation Endpoint 
 
