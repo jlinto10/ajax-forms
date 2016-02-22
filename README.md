@@ -12,16 +12,6 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 
 #### The Input To Validate
 
-**name** is the name of the URL encoded parameter
-
-**validate-ajax** is the endpoint for the validation
-
-**spinner** is the id of the spinner/loading element
-
-**success** is the id of the success icon/element
-
-**danger** is the id of the danger icon/element
-
     <input type="text"
         name="email"
         class="form-control"
@@ -31,6 +21,16 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
         spinner="emailSpinner"
         success="emailSuccess"
         danger="emailDanger">
+        
+**name** is the name of the URL encoded parameter
+
+**validate-ajax** is the endpoint for the validation
+
+**spinner** is the id of the spinner/loading element
+
+**success** is the id of the success icon/element
+
+**danger** is the id of the danger icon/element
 
 Note: the default hidden class happens to be `hidden`. This can be easily configured, along with all the other default functionality.
 
@@ -59,11 +59,14 @@ This is what you want to show when the input is not valid. Notice that danger el
         title="Email Error"
         data-content="Email not valid"></i>
 
-#### The Validation Endpoint 
+
+That's all for the front end. Toggling visibility for all these elements, and generating the ajax request is all handled by the plugin.
+
+#### The Validation Endpoint (Server side)
 
 ##### The Request
 
-The **name** attribute is used to name the URL encoded parameters. Therefore the example input above would generate the following GET request : 
+The **name** attribute is used to name the URL encoded parameters. Therefore the username example above would generate the following GET request : 
 
 `http://localhost:2300/api/validate/username?username={valueEntered}`
 
@@ -74,4 +77,6 @@ If you wish to use the default input validation functions, the validation endpoi
     {
         "isValid" : true, // a boolean for the validity of the field
         "message" : "The resulting message" // a helpful message if the field is not valid
+                                            // NOTE: this message is used in the danger popover
     }
+
