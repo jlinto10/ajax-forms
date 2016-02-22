@@ -1,10 +1,6 @@
 # Ajax Input Validation
 
-This tool is great for validating a single input via ajax. This tool is not intended to replace all validation. A great example usage would be the availability of a username. This likely requires a serverside check against the database. Idealy
-
-I created this because I was working on a web appliaction where some custom field validation existed on both the frontend and backend. The purpose of this tool is to consolidate validation to the backend.
-
-Also, there are some scenarios where you need the validation to occur in the backend. For example, if your validation requires a hit to the database, or some kind of server side action.
+This tool is great for validating a single input via ajax. This tool is not intended to validate all fields in a form. A great application of this plugin would be the availability of a username. This likely requires a serverside check against the database. The benefit of using this plugin is that the username can be verified before submiting and entire form, thus saving the user time and frustration.
 
 ## How To
 
@@ -79,4 +75,3 @@ If you wish to use the default input validation functions, the validation endpoi
         "message" : "The resulting message" // a helpful message if the field is not valid
                                             // NOTE: this message is used in the danger popover
     }
-
