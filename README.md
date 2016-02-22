@@ -24,7 +24,7 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
         
 **name** is the name of the URL encoded parameter
 
-**validate-ajax** is the endpoint for the validation
+**validate-ajax** is the endpoint for the validation (typically this would be relative, for the sake of my example API the full URL is specified)
 
 **spinner** is the id of the spinner/loading element
 
