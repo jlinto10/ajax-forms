@@ -13,14 +13,14 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 #### The Input To Validate
 
     <input type="text"
-        name="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        placeholder="Email"
-        validate-ajax="http://localhost:2300/api/validate/email"
-        spinner="emailSpinner"
-        success="emailSuccess"
-        danger="emailDanger">
+           name="username"
+           class="form-control"
+           id="exampleInputUsername"
+           placeholder="Username"
+           validate-ajax="http://localhost:2300/api/validate/username"
+           spinner="usernameSpinner"
+           success="usernameSuccess"
+           danger="usernameDanger">
         
 **name** is the name of the URL encoded parameter
 
@@ -44,20 +44,20 @@ It's nice to provide some kind of feedback while the input is being validated. T
 
 This is what you want to show when the input entered is valid.
 
-    <i id="emailSuccess" class="fa fa-check-circle hidden"></i>
+    <i id="usernameSuccess" class="fa fa-check-circle hidden"></i>
 
 ##### Danger
 
 This is what you want to show when the input is not valid. Notice that danger element also uses the Bootstrap popover.
 
-    <i id="emailDanger"
-        class="fa fa-exclamation-circle hidden"
-        data-toggle="popover"
-        data-placement="bottom"
-        data-trigger="click"
-        data-container="body"
-        title="Email Error"
-        data-content="Email not valid"></i>
+    <i id="usernameDanger"
+       class="fa fa-exclamation-circle hidden"
+       data-toggle="popover"
+       data-placement="bottom"
+       data-trigger="click"
+       data-container="body"
+       title="Username Not Valid"
+       data-content="Username not available"></i>
 
 
 That's all for the front end. Toggling visibility for all these elements, and generating the ajax request is all handled by the plugin.
