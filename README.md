@@ -1,6 +1,6 @@
 # Ajax Input Validation
 
-This tool is great for validating a single input via ajax. This tool is not intended to validate all fields in a form. A great application of this plugin would be the availability of a username. This likely requires a serverside check against the database. The benefit of using this plugin is that the username can be verified before submiting and entire form, thus saving the user time and frustration.
+This tool is great for validating a single input via ajax. This tool is not intended to validate all fields in a form. A great application of this plugin would be the availability of a username. This likely requires a serverside check against the database. The benefit of using this plugin is that the username can be verified before submiting an entire form, thus saving the user time and frustration.
 
 ## How To
 
