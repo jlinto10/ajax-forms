@@ -10,23 +10,20 @@ First, include `js/ajax-forms.js` like any other Jquery extension using the `scr
 
     <input type="text"
            name="username"
-           class="form-control"
-           id="exampleInputUsername"
-           placeholder="Username"
            validate-ajax="http://localhost:2300/api/validate/username"
            spinner="usernameSpinner"
            success="usernameSuccess"
            danger="usernameDanger">
         
-**name** is the name of the URL encoded parameter
+* **name** is the name of the URL encoded parameter
 
-**validate-ajax** is the endpoint for the validation (typically this would be relative, for the sake of my example API the full URL is specified)
+* **validate-ajax** is the endpoint for the validation (typically this would be relative, for the sake of my example API the full URL is specified)
 
-**spinner** is the id of the spinner/loading element
+* **spinner** is the id of the spinner/loading element
 
-**success** is the id of the success icon/element
+* **success** is the id of the success icon/element
 
-**danger** is the id of the danger icon/element
+* **danger** is the id of the danger icon/element
 
 Note: the default hidden class happens to be `hidden`. This can be easily configured, along with all the other default functionality.
 
@@ -73,5 +70,4 @@ If you wish to use the default input validation functions, the validation endpoi
     {
         "isValid" : true, // a boolean for the validity of the field
         "message" : "The resulting message" // a helpful message if the field is not valid
-                                            // NOTE: this message is used in the danger popover
-    }
+    }                                       // NOTE: this message is used in the danger popover
