@@ -4,7 +4,7 @@ This jQuery plugin is great for validating a single input via ajax. This tool is
 
 ## How To
 
-First, include `js/ajax-forms.js` like any other Jquery extension using the `script` tag.
+First, include `js/jquery-input-validation.js` like any other Jquery extension using the `script` tag.
 
 #### The Input To Validate
 
@@ -52,7 +52,6 @@ This is what you want to show when the input is not valid. Notice that danger el
        title="Username Not Valid"
        data-content="Username not available"></i>
 
-
 That's all for the front end. Toggling visibility for all these elements, and generating the ajax request is all handled by the plugin.
 
 #### The Validation Endpoint (Server side)
@@ -71,3 +70,48 @@ If you wish to use the default input validation functions, the validation endpoi
         "isValid" : true, // a boolean for the validity of the field
         "message" : "The resulting message" // a helpful message if the field is not valid
     }                                       // NOTE: this message is used in the danger popover
+
+#### Changing Default Behavior
+
+The 'js/sample-script.js' file demonstrates how to change the default values and behavior of the plugin. These are the values that can be overriden.
+
+    // data = json from validation endpoint
+    // $alert = the element that we show when there is a problem
+    // $input = the input that we are validating
+    // $formGroup = the form group that this input belongs to
+    // $success = the success element associated with this input
+    // $danger = the danger element associated with this input
+    inputSuccess: function (data, $alert, $input, $formGroup, $success, $danger) { }
+
+    // textStatus = (from jquery)
+    // errorThrown = (from jquery)
+    // $alert = the element that we show when an error occurs
+    // url = the url of the endpoint where we are validating
+    // data = the data from the endpoint
+    // $formGroup = the form group that this input belongs to
+    inputError: function (textStatus, errorThrown, $alert, url, data, $formGroup) { }
+
+    // $input = the input that we are validating
+    // $spinner = the spinner element
+    inputAlways: function ($input, $spinner) { )
+
+    // The jquery event that will trigger the validation
+    inputEvent: 'change'
+
+    // Our hidden class
+    hiddenClass: 'hidden'
+
+    // The success class (Bootstrap)
+    hasSuccess: 'has-success'
+
+    // The error class (Bootstrap)
+    hasError: 'has-error'
+
+    // The input parent. This is where we decorate the input with success or error
+    inputParent: 'form-group'
+
+    // The id of the validation error dialogue
+    validationAlert: 'validationAlert'
+
+    // The message to show inside the validation error element
+    errorMessage: '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input.'
