@@ -73,7 +73,7 @@ If you wish to use the default input validation functions, the validation endpoi
 
 #### Changing Default Behavior
 
-The 'js/sample-script.js' file demonstrates how to change the default values and behavior of the plugin. These are the values that can be overriden.
+The `js/sample-script.js` file demonstrates how to change the default values and behavior of the plugin. These are the values that can be overriden.
 
     // data = json from validation endpoint
     // $alert = the element that we show when there is a problem
