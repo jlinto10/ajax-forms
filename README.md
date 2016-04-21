@@ -115,3 +115,4 @@ The `js/sample-script.js` file demonstrates how to change the default values and
 
     // The message to show inside the validation error element
     errorMessage : '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input.'
+    
