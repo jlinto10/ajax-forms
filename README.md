@@ -81,7 +81,7 @@ The `js/sample-script.js` file demonstrates how to change the default values and
     // $formGroup = the form group that this input belongs to
     // $success = the success element associated with this input
     // $danger = the danger element associated with this input
-    inputSuccess : function (data, $alert, $input, $formGroup, $success, $danger) { }
+    inputSuccess : function (data, $alert, $input, $formGroup, $success, $danger)
 
     // textStatus = (from jquery)
     // errorThrown = (from jquery)
@@ -89,11 +89,11 @@ The `js/sample-script.js` file demonstrates how to change the default values and
     // url = the url of the endpoint where we are validating
     // data = the data from the endpoint
     // $formGroup = the form group that this input belongs to
-    inputError : function (textStatus, errorThrown, $alert, url, data, $formGroup) { }
+    inputError : function (textStatus, errorThrown, $alert, url, data, $formGroup)
 
     // $input = the input that we are validating
     // $spinner = the spinner element
-    inputAlways : function ($input, $spinner) { )
+    inputAlways : function ($input, $spinner)
 
     // The jquery event that will trigger the validation
     inputEvent : 'change'
