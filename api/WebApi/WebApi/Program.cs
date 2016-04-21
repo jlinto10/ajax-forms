@@ -1,7 +1,6 @@
 ﻿using Microsoft.Owin.Hosting;
 using System;
 using System.Net.Http;
-
 namespace WebApi
 {
     class Program

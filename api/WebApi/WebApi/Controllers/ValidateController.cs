@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Threading;
 using WebApi.Models;
-
 namespace WebApi.Controllers
 {
     [RoutePrefix("validate")]
@@ -18,14 +17,12 @@ namespace WebApi.Controllers
         public IHttpActionResult Username(string username)
         {
             Thread.Sleep(_random.Next(_delay) + _delay / 2);
-
             var userNameAvailable = !userNameList.Contains(username);
             var result = new ValidationResult
             {
                 isValid = userNameAvailable,
                 message = userNameAvailable ? "" : string.Format("{0} is taken", username)
             };
-
             return Ok(result);
         }
     }
