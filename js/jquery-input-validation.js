@@ -1,3 +1,4 @@
+
 (function ($) {
     
     'use strict';
@@ -116,20 +117,28 @@
             data: data
         })
         .error(function (textStatus, errorThrown) {
+            
             $.fn.inputValidation.defaults.inputError(textStatus, errorThrown, $alert, url, data, $formGroup);
+            
         })
         .success(function (data) {
+            
             $.fn.inputValidation.defaults.inputSuccess(data, $alert, $input, $formGroup, $success, $danger);
+            
         })
         .always(function () {
+            
             $.fn.inputValidation.defaults.inputAlways($input, $spinner);
+            
         });
     }
     
     // events
     
     $(document).on($.fn.inputValidation.defaults.inputEvent, 'input[validate-ajax]', function (event) {
+        
         validateInput($(this));
+        
     });
     
 }(jQuery));
