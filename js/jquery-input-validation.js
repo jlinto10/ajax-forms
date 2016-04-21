@@ -13,6 +13,7 @@
     };
     
     $.fn.inputValidation.defaults = {
+        
         inputSuccess: function (data, $alert, $input, $formGroup, $success, $danger) {
             
             var isValid = data.isValid,
@@ -38,6 +39,7 @@
                 
             }
         },
+        
         inputError: function (textStatus, errorThrown, $alert, url, data, $formGroup) {
             
             $formGroup.addClass($.fn.inputValidation.defaults.hasError);
@@ -50,25 +52,33 @@
             console.log('Data : ' + data);
             console.log('textStatus : ' + JSON.stringify(textStatus));
             console.log('errorThrown : ' + JSON.stringify(errorThrown));
-            
         },
+        
         inputAlways: function ($input, $spinner) {
             
             $spinner.addClass($.fn.inputValidation.defaults.hiddenClass);
             
         },
+        
         inputEvent: 'change',
+        
         hiddenClass: 'hidden',
+        
         hasSuccess: 'has-success',
+        
         hasError: 'has-error',
+        
         inputParent: 'form-group',
+        
         validationAlert: 'validationAlert',
-        errorMessage: '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input. (&#x2323;_&#x2323;&#x201D;)'
+        
+        errorMessage: '<i class="fa fa-exclamation-triangle "></i> There was a problem validating user input.'
     };
     
     // private functions
     
     function validateInput($input) {
+        
         var $spinner = $('#' + $input.attr('spinner')),
             $success = $('#' + $input.attr('success')),
             $danger = $('#' + $input.attr('danger')),

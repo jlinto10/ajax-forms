@@ -9,8 +9,6 @@ namespace WebApi
         static void Main(string[] args)
         {
             string baseAddress = "http://localhost:2300/";
-
-            // Start OWIN host 
             using (WebApp.Start<Startup>(url: baseAddress))
             {
                 Console.WriteLine("OWIN service started at {0}\n", baseAddress);
