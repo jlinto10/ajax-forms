@@ -61,3 +61,12 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+###############################################################################
+# Vendor files/paths for linguist
+###############################################################################
+#Sample API
+api/* linguist-vendored
+
+#Sample html
+index.html linguist-vendored
